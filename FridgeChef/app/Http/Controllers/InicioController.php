@@ -8,10 +8,18 @@ class InicioController extends Controller
 {
     public function index()
     {
-        $recetas = Receta::orderBy('fecha_creacion', 'desc')
+        $recetas = Receta::with(['categoria', 'usuario'])
+            ->orderBy('fecha_creacion', 'desc')
             ->take(4)
             ->get();
 
         return view('inicio', compact('recetas'));
+    }
+
+    public function show($id)
+    {
+        $receta = Receta::with('ingredientes')->findOrFail($id);
+
+        return view('detalle', compact('receta'));
     }
 }

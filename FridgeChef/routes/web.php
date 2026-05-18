@@ -1,11 +1,8 @@
 <?php
 
-use App\Models\Receta;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InicioController;
 
-Route::get('/', function () {
-    $recetas = Receta::orderBy('fecha_creacion', 'desc')
-        ->take(4)
-        ->get();
-
-    return view('inicio', compact('recetas'));
-});
+Route::get('/', [InicioController::class, 'index']);
+Route::get('/receta/{id}', [InicioController::class, 'show'])
+    ->name('receta.detalle');

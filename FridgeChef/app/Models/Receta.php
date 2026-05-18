@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Receta extends Model
 {
@@ -24,7 +25,7 @@ class Receta extends Model
 
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'id_usuario', 'id_usuario');
+    return $this->belongsTo(User::class, 'id_usuario', 'id_usuario');
     }
 
     public function categoria()

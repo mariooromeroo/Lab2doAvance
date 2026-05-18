@@ -38,7 +38,9 @@
                 <div class="receta-imagen-placeholder">🍲</div>
                 <h3>{{ $receta->titulo }}</h3>
                 <p>⏱ {{ $receta->tiempo_preparacion }} min</p>
-                <a href="#">Ver receta</a>
+                <a href="{{ route('receta.detalle', $receta->id_receta) }}">
+                Ver receta
+                </a>
             </div>
             @endforeach
         </div>

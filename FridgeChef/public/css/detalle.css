@@ -1,0 +1,151 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    padding:40px;
+    color:#333;
+}
+
+/* CONTENEDOR ARRIBA */
+
+.contenedor-principal{
+    display:flex;
+    gap:30px;
+    margin-bottom:40px;
+    align-items:flex-start;
+}
+
+/* IMAGEN */
+
+.imagen-receta img{
+    width:420px;
+    border-radius:12px;
+    object-fit:cover;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* INFORMACION */
+
+.info-receta{
+    flex:1;
+}
+
+.info-receta h1{
+    font-size:52px;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+
+/* ESTRELLAS */
+
+.rating{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.estrellas{
+    color:#f4c542;
+    font-size:28px;
+}
+
+.rating span{
+    font-size:28px;
+    color:#555;
+    font-weight:bold;
+}
+
+/* DATOS */
+
+.datos{
+    display:flex;
+    gap:40px;
+    margin-bottom:30px;
+}
+
+.dato{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.dato i{
+    font-size:32px;
+    color:#555;
+}
+
+.dato span{
+    display:block;
+    color:#777;
+    font-size:16px;
+}
+
+.dato strong{
+    font-size:30px;
+}
+
+/* DESCRIPCION */
+
+.descripcion{
+    font-size:34px;
+    line-height:1.5;
+    color:#555;
+    margin-bottom:30px;
+}
+
+/* BOTON */
+
+.btn-compartir{
+    border:2px solid #999;
+    background:white;
+    padding:12px 22px;
+    border-radius:14px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.btn-compartir:hover{
+    background:#eee;
+}
+
+/* CONTENIDO ABAJO */
+
+.contenido{
+    display:flex;
+    gap:50px;
+}
+
+/* INGREDIENTES Y PREPARACION */
+
+.ingredientes,
+.preparacion{
+    flex:1;
+}
+
+.ingredientes h2,
+.preparacion h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+/* LISTAS */
+
+ul li{
+    margin-bottom:18px;
+    line-height:1.6;
+    font-size:28px;
+    color:#666;
+}
+
+.texto-preparacion{
+    font-size:28px;
+    color:#666;
+    line-height:1.8;
+}
+
