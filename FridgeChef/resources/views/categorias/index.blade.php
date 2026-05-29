@@ -68,32 +68,6 @@
             background: #1b4d3e;
             transform: scale(1.05);
         }
-        .btn-crear {
-            background: #2d6a4f;
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
-        }
-        .btn-crear:hover {
-            background: #1b4d3e;
-            transform: scale(1.05);
-        }
-        .alert {
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-        }
-        .alert-success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
         .hero-categorias {
             background: #f0f7f0;
             text-align: center;
@@ -127,9 +101,8 @@
     </header>
 
     <div class="hero-categorias">
-        <h2>📂 Explora nuestras categorías</h2>
+        <h2>Explora nuestras categorías</h2>
         <p>Organiza tus recetas por tipo de comida y encuentra inspiración</p>
-        <a href="{{ route('categorias.create') }}" class="btn-crear">+ Nueva Categoría</a>
     </div>
 
     <div class="categorias-container">
@@ -161,8 +134,7 @@
                 <div class="text-center" style="grid-column: 1/-1; padding: 3rem;">
                     <i class="fas fa-inbox fa-4x" style="color: #ccc;"></i>
                     <h3>No hay categorías registradas</h3>
-                    <p>¡Crea tu primera categoría para organizar tus recetas!</p>
-                    <a href="{{ route('categorias.create') }}" class="btn-crear">+ Nueva Categoría</a>
+                    <p>No hay categorías disponibles en este momento.</p>
                 </div>
             @endforelse
         </div>

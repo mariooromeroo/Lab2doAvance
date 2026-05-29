@@ -8,109 +8,122 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .detalle-container {
-            max-width: 550px;
-            margin: 3rem auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
-        .detalle-header {
+        .categoria-header {
             background: #2d6a4f;
-            color: white;
-            padding: 1.5rem;
+            border-radius: 20px;
+            padding: 2rem;
             text-align: center;
+            color: white;
+            margin-bottom: 2rem;
         }
-        .detalle-header h2 {
-            margin: 0;
-            font-size: 1.8rem;
+        .categoria-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
-        .detalle-icono {
+        .categoria-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .categoria-icono {
             background: white;
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: -35px auto 0 auto;
+            margin: -60px auto 1rem auto;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .detalle-icono i {
-            font-size: 2rem;
+        .categoria-icono i {
+            font-size: 2.5rem;
             color: #2d6a4f;
         }
-        .detalle-body {
+        .recetas-section {
+            background: white;
+            border-radius: 20px;
             padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
         }
-        .detalle-info {
+        .recetas-section h2 {
+            color: #2d6a4f;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f7f0;
+        }
+        .recetas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card-receta {
             background: #f8f9fa;
             border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease;
         }
-        .info-row {
+        .card-receta:hover {
+            transform: translateY(-5px);
+        }
+        .receta-icono {
+            background: #2d6a4f;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
             display: flex;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        .info-row:last-child {
-            border-bottom: none;
-        }
-        .info-label {
-            font-weight: bold;
-            width: 120px;
-            color: #2d6a4f;
-        }
-        .info-value {
-            flex: 1;
-            color: #333;
-        }
-        .detalle-descripcion {
-            background: #f0f7f0;
-            border-radius: 15px;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            color: #2d6a4f;
-            font-style: italic;
-        }
-        .botones-detalle {
-            display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
+            margin-bottom: 1rem;
         }
-        .btn-detalle {
+        .receta-icono i {
+            font-size: 1.3rem;
+            color: white;
+        }
+        .card-receta h3 {
+            color: #2d6a4f;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .receta-tiempo {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        .receta-descripcion {
+            color: #888;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .btn-ver-receta {
+            color: #2d6a4f;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        .btn-ver-receta:hover {
+            text-decoration: underline;
+        }
+        .sin-recetas {
+            text-align: center;
+            padding: 3rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        .btn-volver {
+            display: inline-block;
+            background: #2d6a4f;
+            color: white;
             padding: 0.7rem 1.5rem;
             border-radius: 25px;
             text-decoration: none;
-            font-weight: 500;
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .btn-editar-detalle {
-            background: #ffc107;
-            color: #333;
-        }
-        .btn-editar-detalle:hover {
-            background: #e0a800;
-        }
-        .btn-eliminar-detalle {
-            background: #dc3545;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-eliminar-detalle:hover {
-            background: #c82333;
-        }
-        .btn-volver {
-            background: #2d6a4f;
-            color: white;
+            margin-top: 1rem;
         }
         .btn-volver:hover {
             background: #1b4d3e;
@@ -133,52 +146,55 @@
     </header>
 
     <div class="detalle-container">
-        <div class="detalle-header">
-            <h2><i class="fas fa-tag"></i> Detalles</h2>
-        </div>
-        <div class="detalle-icono">
-            @php
-                $iconos = ['fa-utensils', 'fa-salad', 'fa-pizza-slice', 'fa-mug-hot', 'fa-ice-cream', 'fa-fish', 'fa-bread-slice', 'fa-apple-alt', 'fa-cake-candles'];
-                $icono = $iconos[$categoria->id_categoria % count($iconos)];
-            @endphp
-            <i class="fas {{ $icono }}"></i>
-        </div>
-        <div class="detalle-body">
-            <div class="detalle-descripcion">
-                "{{ $categoria->descripcion ?? 'Sin descripción' }}"
+        <!-- Header de la categoría -->
+        <div class="categoria-header">
+            <div class="categoria-icono">
+                @php
+                    $iconos = ['fa-utensils', 'fa-salad', 'fa-pizza-slice', 'fa-mug-hot', 'fa-ice-cream', 'fa-fish', 'fa-bread-slice', 'fa-apple-alt', 'fa-cake-candles'];
+                    $icono = $iconos[$categoria->id_categoria % count($iconos)];
+                @endphp
+                <i class="fas {{ $icono }}"></i>
             </div>
-            <div class="detalle-info">
-                <div class="info-row">
-                    <div class="info-label"><i class="fas fa-id-card"></i> ID:</div>
-                    <div class="info-value">{{ $categoria->id_categoria }}</div>
+            <h1>{{ $categoria->nombre_categoria }}</h1>
+            <p>{{ $categoria->descripcion ?? 'Sin descripción' }}</p>
+        </div>
+
+        <!-- SECCIÓN DE RECETAS -->
+        <div class="recetas-section">
+            <h2><i class="fas fa-utensils"></i> Recetas en {{ $categoria->nombre_categoria }}</h2>
+            
+            @if($recetas->count() > 0)
+                <div class="recetas-grid">
+                    @foreach($recetas as $receta)
+                        <div class="card-receta">
+                            <div class="receta-icono">
+                                <i class="fas fa-utensil-spoon"></i>
+                            </div>
+                            <h3>{{ $receta->titulo }}</h3>
+                            <div class="receta-tiempo">
+                                <i class="fas fa-clock"></i> {{ $receta->tiempo_preparacion }} min
+                            </div>
+                            <div class="receta-descripcion">
+                                {{ Str::limit($receta->descripcion, 80) }}
+                            </div>
+                            <a href="#" class="btn-ver-receta">
+                                Ver receta completa <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
-                <div class="info-row">
-                    <div class="info-label"><i class="fas fa-tag"></i> Nombre:</div>
-                    <div class="info-value"><strong>{{ $categoria->nombre_categoria }}</strong></div>
+            @else
+                <div class="sin-recetas">
+                    <i class="fas fa-info-circle fa-3x" style="color: #ccc;"></i>
+                    <p>No hay recetas en esta categoría aún.</p>
                 </div>
-                <div class="info-row">
-                    <div class="info-label"><i class="fas fa-calendar-alt"></i> Fecha Creación:</div>
-                    <div class="info-value">{{ $categoria->created_at ? $categoria->created_at->format('d/m/Y H:i') : 'No registrada' }}</div>
-                </div>
-                <div class="info-row">
-                    <div class="info-label"><i class="fas fa-sync-alt"></i> Última Actualización:</div>
-                    <div class="info-value">{{ $categoria->updated_at ? $categoria->updated_at->format('d/m/Y H:i') : 'No registrada' }}</div>
-                </div>
-            </div>
-            <div class="botones-detalle">
-                <a href="{{ route('categorias.index') }}" class="btn-detalle btn-volver">
+            @endif
+
+            <!-- Solo botón Volver -->
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="{{ route('categorias.index') }}" class="btn-volver">
                     <i class="fas fa-arrow-left"></i> Volver
                 </a>
-                <a href="{{ route('categorias.edit', $categoria) }}" class="btn-detalle btn-editar-detalle">
-                    <i class="fas fa-edit"></i> Editar
-                </a>
-                <form action="{{ route('categorias.destroy', $categoria) }}" method="POST" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn-detalle btn-eliminar-detalle" onclick="return confirm('¿Eliminar esta categoría?')">
-                        <i class="fas fa-trash"></i> Eliminar
-                    </button>
-                </form>
             </div>
         </div>
     </div>
