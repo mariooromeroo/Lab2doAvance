@@ -3,6 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FridgeChef</title>
+    <link rel="stylesheet" href="{{ asset('css/inicio.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <h1>FridgeChef</h1>
+        </div>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="{{ route('categorias.index') }}">Categorías</a>
+            <a href="#">Mis recetas</a>
+            <a href="#">Sobre Nosotros</a>
+        </nav>
+        <div class="acciones">
+            <form action="{{ route('busqueda') }}" method="GET">
+
+                 <input
+                     type="text"
+                     name="buscar"
+                  placeholder="Buscar..."
+                 >
+
+            </form>
+            <button>Iniciar Sesión</button>
+        </div>
+    </header>
     <title>{{ $receta->titulo }}</title>
 
     <link rel="stylesheet" href="{{ asset('css/detalle.css') }}">

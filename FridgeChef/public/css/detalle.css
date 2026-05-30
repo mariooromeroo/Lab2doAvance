@@ -1,14 +1,67 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family: Arial, sans-serif;
-    background:#f4f4f4;
-    padding:40px;
-    color:#333;
+body {
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    color: #000000;
+}
+
+/* NAVBAR */
+.navbar {
+    background: #2d6a4f;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo h1 {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.acciones {
+    display: flex;
+    gap: 1rem;
+}
+
+.acciones input {
+    padding: 0.5rem;
+    border-radius: 20px;
+    border: none;
+    background: #e8f5e9;
+}
+
+.acciones button {
+    background: transparent;
+    border: 1px solid #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.acciones button:hover {
+    background: #ffffff;
+    color: #2d6a4f;
 }
 
 /* CONTENEDOR ARRIBA */

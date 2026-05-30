@@ -19,7 +19,15 @@
             <a href="#">Sobre Nosotros</a>
         </nav>
         <div class="acciones">
-            <input type="text" placeholder="Buscar...">
+            <form action="{{ route('busqueda') }}" method="GET">
+
+                 <input
+                     type="text"
+                     name="buscar"
+                  placeholder="Buscar..."
+                 >
+
+            </form>
             <button>Iniciar Sesión</button>
         </div>
     </header>
