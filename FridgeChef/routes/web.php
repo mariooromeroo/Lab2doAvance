@@ -18,3 +18,11 @@ Route::get('/login', [LoginController::class, 'showLoginForm']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::post('/register', [LoginController::class, 'register']);
+
+Route::get('/mis-recetas', function () {
+    $misRecetas = App\Models\Receta::where('id_usuario', 1)
+        ->orderBy('fecha_creacion', 'desc')
+        ->get();
+    $categorias = App\Models\Categoria::all();
+    return view('mis-recetas', compact('misRecetas', 'categorias'));
+})->name('mis-recetas');

@@ -19,7 +19,7 @@
     <nav>
         <a href="/">Inicio</a>
         <a href="{{ route('categorias.index') }}">Categorías</a>
-        <a href="#">Mis recetas</a>
+        <a href="{{ route('mis-recetas') }}">Mis recetas</a>
         <a href="#">Sobre Nosotros</a>
     </nav>
 
