@@ -20,15 +20,12 @@
         </nav>
         <div class="acciones">
             <form action="{{ route('busqueda') }}" method="GET">
-
-                 <input
-                     type="text"
-                     name="buscar"
-                  placeholder="Buscar..."
-                 >
-
+                <input type="text" name="buscar" placeholder="Buscar...">
             </form>
-            <button>Iniciar Sesión</button>
+            <!-- Botón corregido -->
+            <a href="{{ url('/login') }}">
+                <button type="button">Iniciar Sesión</button>
+            </a>
         </div>
     </header>
 
@@ -47,7 +44,7 @@
                 <h3>{{ $receta->titulo }}</h3>
                 <p>⏱ {{ $receta->tiempo_preparacion }} min</p>
                 <a href="{{ route('receta.detalle', $receta->id_receta) }}">
-                Ver receta
+                    Ver receta
                 </a>
             </div>
             @endforeach

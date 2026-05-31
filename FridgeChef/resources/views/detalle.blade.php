@@ -28,7 +28,9 @@
                  >
 
             </form>
-            <button>Iniciar Sesión</button>
+            <a href="{{ url('/login') }}">
+                <button type="button">Iniciar Sesión</button>
+            </a>
         </div>
     </header>
     <title>{{ $receta->titulo }}</title>

@@ -5,85 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categorías - FridgeChef</title>
     <link rel="stylesheet" href="{{ asset('css/inicio.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/categorias.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        .categorias-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .categorias-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .card-categoria {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #e0e0e0;
-        }
-        .card-categoria:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        .card-icon {
-            background: #2d6a4f;
-            padding: 2rem;
-            text-align: center;
-            font-size: 3rem;
-            color: white;
-        }
-        .card-body-categoria {
-            padding: 1.5rem;
-            text-align: center;
-        }
-        .card-body-categoria h3 {
-            color: #2d6a4f;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        .card-body-categoria p {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .btn-ver {
-            background: #2d6a4f;
-            color: white;
-            border: none;
-            padding: 0.5rem 1.2rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .btn-ver:hover {
-            background: #1b4d3e;
-            transform: scale(1.05);
-        }
-        .hero-categorias {
-            background: #f0f7f0;
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-bottom: 2rem;
-        }
-        .hero-categorias h2 {
-            color: #2d6a4f;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        .hero-categorias p {
-            color: #555;
-            font-size: 1.1rem;
-        }
-    </style>
 </head>
 <body>
     <header class="navbar">
@@ -95,20 +18,12 @@
             <a href="#">Sobre Nosotros</a>
         </nav>
         <div class="acciones">
-            <div class="acciones">
             <form action="{{ route('busqueda') }}" method="GET">
-
-                 <input
-                     type="text"
-                     name="buscar"
-                  placeholder="Buscar..."
-                 >
-
+                <input type="text" name="buscar" placeholder="Buscar...">
             </form>
-            <button>Iniciar Sesión</button>
-        </div>
-    </header>
-            <button>Iniciar Sesión</button>
+            <a href="{{ url('/login') }}">
+                <button type="button">Iniciar Sesión</button>
+            </a>
         </div>
     </header>
 

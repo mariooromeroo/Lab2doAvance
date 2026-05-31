@@ -1,0 +1,270 @@
+/* ========================================
+   CATEGORIAS - Estilos exclusivos
+   ======================================== */
+
+/* ========== INDEX (Lista de categorías) ========== */
+
+.categorias-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card-categoria {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.card-categoria:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card-icon {
+    background: #2d6a4f;
+    padding: 2rem;
+    text-align: center;
+    font-size: 3rem;
+    color: white;
+}
+
+.card-body-categoria {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-body-categoria h3 {
+    color: #2d6a4f;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-body-categoria p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.btn-ver {
+    background: #2d6a4f;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-ver:hover {
+    background: #1b4d3e;
+    transform: scale(1.05);
+}
+
+.hero-categorias {
+    background: #f0f7f0;
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-categorias h2 {
+    color: #2d6a4f;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-categorias p {
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.sin-categorias {
+    text-align: center;
+    padding: 3rem;
+    background: #f5faf5;
+    border-radius: 20px;
+    color: #2d5a3b;
+}
+
+/* Alertas */
+.alert {
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ========== SHOW (Detalle de categoría con recetas) ========== */
+
+.detalle-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.categoria-header {
+    background: #2d6a4f;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.categoria-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.categoria-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.categoria-icono {
+    background: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -60px auto 1rem auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.categoria-icono i {
+    font-size: 2.5rem;
+    color: #2d6a4f;
+}
+
+.recetas-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+.recetas-section h2 {
+    color: #2d6a4f;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f7f0;
+}
+
+.recetas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.card-receta {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease;
+}
+
+.card-receta:hover {
+    transform: translateY(-5px);
+}
+
+.receta-icono {
+    background: #2d6a4f;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.receta-icono i {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.card-receta h3 {
+    color: #2d6a4f;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.receta-tiempo {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.receta-descripcion {
+    color: #888;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.btn-ver-receta {
+    color: #2d6a4f;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-ver-receta:hover {
+    text-decoration: underline;
+}
+
+.sin-recetas {
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.btn-volver {
+    display: inline-block;
+    background: #2d6a4f;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-volver:hover {
+    background: #1b4d3e;
+}
+
+.mt-3 {
+    margin-top: 2rem;
+}
