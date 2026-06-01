@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2026 a las 07:51:40
+-- Tiempo de generación: 01-06-2026 a las 05:53:33
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -108,7 +108,16 @@ INSERT INTO `ingredientes` (`id_ingrediente`, `nombre_ingrediente`) VALUES
 (6, 'Pasta'),
 (7, 'Queso parmesano'),
 (8, 'Carne al pastor'),
-(9, 'Tortillas');
+(9, 'Tortillas'),
+(10, 'Paprika'),
+(11, 'Tomillo'),
+(12, 'Limón'),
+(13, 'Pollo desmenuzado'),
+(14, 'Aderezo César'),
+(15, 'Mantequilla'),
+(16, 'Crema'),
+(17, 'Cebolla'),
+(18, 'Cilantro');
 
 -- --------------------------------------------------------
 
@@ -205,15 +214,7 @@ INSERT INTO `recetas` (`id_receta`, `id_usuario`, `id_categoria`, `titulo`, `des
 (1, 1, 1, 'Pollo al Horno', 'Pollo jugoso y lleno de sabor, marinado con hierbas y especias.', '1. Precalienta el horno a 200°C.\r\n2. Mezcla ajo, aceite de oliva y especias.\r\n3. Marina el pollo completamente.\r\n4. Hornea durante 45 minutos.\r\n5. Deja reposar antes de servir.', 45, 4, 'Pollo.jpg', '2026-05-18 03:39:02'),
 (2, 1, 2, 'Ensalada César', 'Ensalada fresca con pollo, crutones y aderezo César.', '1. Lava la lechuga romana.\r\n2. Cocina el pollo y córtalo en tiras.\r\n3. Agrega crutones y queso parmesano.\r\n4. Mezcla con aderezo César.\r\n5. Servir fría.', 15, 2, 'Ensalada.jpg', '2026-05-18 03:39:02'),
 (3, 2, 3, 'Pasta Alfredo', 'Pasta cremosa con salsa Alfredo y queso parmesano.', '1. Cocina la pasta en agua hirviendo.\r\n2. Derrite mantequilla y agrega crema.\r\n3. Añade queso parmesano.\r\n4. Mezcla con la pasta.\r\n5. Servir caliente.', 25, 2, 'Pasta.jpg', '2026-05-18 03:39:02'),
-(4, 1, 1, 'Tacos al Pastor', 'Tacos mexicanos tradicionales llenos de sabor.', '1. Marina la carne con especias.\r\n2. Cocina en plancha caliente.\r\n3. Calienta las tortillas.\r\n4. Agrega cebolla y cilantro.\r\n5. Servir con limón.', 30, 4, 'Tacos.jpg', '2026-05-18 03:39:02'),
-(5, 2, 1, 'Milanesas de Pollo', 'Milanesas crujientes', 'Empanizar las pechugas. Freír en aceite caliente.', 20, 4, NULL, '2026-05-18 03:39:02'),
-(6, 1, 1, 'Pollo al Horno', 'Pollo jugoso horneado con especias', 'Preparar el pollo con especias y hornear por 45 minutos', 45, 4, NULL, '2026-05-18 05:34:24'),
-(7, 1, 3, 'Pasta Alfredo', 'Pasta cremosa con salsa Alfredo', 'Cocinar pasta, preparar salsa y mezclar', 25, 3, NULL, '2026-05-18 05:34:24'),
-(8, 1, 2, 'Ensalada César', 'Ensalada fresca con pollo, crutones y aderezo César', 'Mezclar lechuga, pollo, crutones y aderezo', 15, 2, NULL, '2026-05-18 05:34:24'),
-(9, 1, 3, 'Spaghetti Boloñesa', 'Pasta con salsa de carne', 'Cocinar pasta y preparar salsa boloñesa', 35, 4, NULL, '2026-05-18 05:34:24'),
-(10, 1, 4, 'Sopa de Tomate', 'Crema de tomate casera', 'Saltear tomates, agregar caldo y licuar', 30, 4, NULL, '2026-05-18 05:34:24'),
-(11, 1, 5, 'Brownie de Chocolate', 'Delicioso brownie con nueces', 'Mezclar ingredientes y hornear por 25 minutos', 25, 8, NULL, '2026-05-18 05:34:24'),
-(12, 1, 1, 'Tacos de Pollo', 'Tacos con pollo deshebrado y vegetales', 'Cocinar pollo, preparar tortillas y servir', 30, 4, NULL, '2026-05-18 05:34:24');
+(4, 1, 1, 'Tacos al Pastor', 'Tacos mexicanos tradicionales llenos de sabor.', '1. Marina la carne con especias.\r\n2. Cocina en plancha caliente.\r\n3. Calienta las tortillas.\r\n4. Agrega cebolla y cilantro.\r\n5. Servir con limón.', 30, 4, 'Tacos.jpg', '2026-05-18 03:39:02');
 
 -- --------------------------------------------------------
 
@@ -236,12 +237,24 @@ INSERT INTO `receta_ingredientes` (`id_receta`, `id_ingrediente`, `cantidad`, `u
 (1, 1, '1', 'pollo'),
 (1, 2, '3', 'dientes'),
 (1, 3, '2', 'cucharadas'),
+(1, 10, '1', 'cucharadita'),
+(1, 11, '1', 'cucharadita'),
+(1, 12, '1', 'unidad'),
 (2, 4, '1', 'lechuga'),
 (2, 5, '1', 'taza'),
+(2, 7, '50', 'gramos'),
+(2, 13, '200', 'gramos'),
+(2, 14, '1', 'taza'),
+(3, 2, '2', 'dientes'),
 (3, 6, '500', 'gramos'),
 (3, 7, '1', 'taza'),
+(3, 15, '2', 'cucharadas'),
+(3, 16, '1', 'taza'),
 (4, 8, '500', 'gramos'),
-(4, 9, '8', 'tortillas');
+(4, 9, '8', 'tortillas'),
+(4, 12, '2', 'unidades'),
+(4, 17, '1', 'unidad'),
+(4, 18, '1', 'taza');
 
 -- --------------------------------------------------------
 
@@ -263,7 +276,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('w0pyQdMLf8d0dqvIQW3vfdBXi1mHoCwkXmfS6e7P', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.119.0 Chrome/142.0.7444.265 Electron/39.8.8 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWDk4b3JNNmpMenJiU2RyTmlxaU1OU3VZc3VCWU1KcVE4UUVHZzk0NiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXRlZ29yaWFzIjtzOjU6InJvdXRlIjtzOjE2OiJjYXRlZ29yaWFzLmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1779083139);
+('RQ0Iu67uiHdmQOHP28LIXXlBGcoKGh5eU6Oxa4nR', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.119.0 Chrome/142.0.7444.265 Electron/39.8.8 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQXlZNzhvMDJGU0o1aEFUQnZwUVNSSG15QTFnTm5nQ0c2TWlURWVGeCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7czo1OiJyb3V0ZSI7Tjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1780255524);
 
 -- --------------------------------------------------------
 
@@ -422,7 +435,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `ingredientes`
 --
 ALTER TABLE `ingredientes`
-  MODIFY `id_ingrediente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_ingrediente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `jobs`
@@ -452,7 +465,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
