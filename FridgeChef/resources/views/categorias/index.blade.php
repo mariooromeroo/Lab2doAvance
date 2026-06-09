@@ -18,13 +18,20 @@
             <a href="#">Sobre Nosotros</a>
         </nav>
         <div class="acciones">
-            <form action="{{ route('busqueda') }}" method="GET">
-                <input type="text" name="buscar" placeholder="Buscar...">
-            </form>
-            <a href="{{ url('/login') }}">
-                <button type="button">Iniciar Sesión</button>
-            </a>
-        </div>
+    <form action="{{ route('busqueda') }}" method="GET">
+        <input type="text" name="buscar" placeholder="Buscar...">
+    </form>
+    
+    @if(auth()->check())
+        <span class="usuario-nombre"> {{ auth()->user()->nombre }}</span>
+        <form method="POST" action="{{ url('/logout') }}" style="display: inline;">
+            @csrf
+            <button type="submit" class="btn-cerrar-sesion">Cerrar Sesión</button>
+        </form>
+    @else
+        <a href="{{ url('/login') }}" class="btn-iniciar-sesion">Iniciar Sesión</a>
+    @endif
+</div>
     </header>
 
     <div class="hero-categorias">

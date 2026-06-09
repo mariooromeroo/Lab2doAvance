@@ -263,3 +263,28 @@ body {
         font-size: 1.5rem;
     }
 }
+
+/* Botón volver al inicio */
+.btn-volver-inicio {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.btn-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: none;
+    color: #2d6a4f;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    color: #1b5e2a;
+    transform: translateX(-3px);
+}

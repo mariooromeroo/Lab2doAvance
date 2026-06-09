@@ -17,7 +17,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 1rem;
 }
 
@@ -316,4 +316,46 @@ footer p {
     .contenedor {
         justify-content: center;
     }
+}
+
+/* Estilos para navbar condicional */
+.usuario-nombre {
+    color: white;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.btn-cerrar-sesion {
+    background: #e03131;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cerrar-sesion:hover {
+    background: #c92a2a;
+}
+
+.btn-iniciar-sesion {
+    background: transparent;
+    border: 1px solid #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-iniciar-sesion:hover {
+    background: #ffffff;
+    color: #2d6a4f;
+}
+
+.acciones {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }

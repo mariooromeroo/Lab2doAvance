@@ -16,12 +16,13 @@ Route::resource('categorias', CategoriaController::class);
 Route::get('/busqueda', [BusquedaController::class, 'index'])
     ->name('busqueda');
 
-Route::get('/login', [LoginController::class, 'showLoginForm']);
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::post('/register', [LoginController::class, 'register']);
 
-Route::get('/mis-recetas', [MisRecetasController::class, 'index'])->name('mis-recetas');
+Route::get('/mis-recetas', [MisRecetasController::class, 'index'])->name('mis-recetas')->middleware('auth');
+Route::post('/mis-recetas/guardar', [MisRecetasController::class, 'store'])->name('mis-recetas.store')->middleware('auth');
 
 Route::post('/receta/{id}/comentario', [ComentarioController::class, 'store'])->name('comentario.store');
 Route::delete('/comentario/{id}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');

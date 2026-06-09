@@ -11,6 +11,11 @@
     <div class="login-container">
         <div class="login-card">
             <div class="login-body">
+                <div class="btn-volver-inicio">
+                    <a href="{{ url('/') }}" class="btn-volver">
+                        ← Volver al inicio
+                    </a>
+                </div>
                 <h2>Iniciar sesión</h2>
                 <p>Ingresa tus datos para acceder a tu cuenta</p>
                 
@@ -36,8 +41,8 @@
                     <div class="form-group">
                         <label>Correo electrónico</label>
                         <input type="email" name="correo" 
-                            value="{{ old('correo', (isset($_COOKIE['remember_email']) && $_COOKIE['remember_email'] != 'deleted' && $_COOKIE['remember_email'] != '') ? $_COOKIE['remember_email'] : '') }}" 
-                            placeholder="ejemplo@correo.com" required>
+    value="{{ old('correo', Cookie::get('remember_email')) }}" 
+    placeholder="ejemplo@correo.com" required>
                     </div>
                     
                     <div class="form-group">
@@ -50,7 +55,7 @@
                     
                     <div class="checkbox-group">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="remember" {{ isset($_COOKIE['remember_email']) && $_COOKIE['remember_email'] != 'deleted' && $_COOKIE['remember_email'] != '' ? 'checked' : '' }}>
+                            <input type="checkbox" name="remember" {{ Cookie::get('remember_email') ? 'checked' : '' }}>
                             <span>Recordarme</span>
                         </label>
                         <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>

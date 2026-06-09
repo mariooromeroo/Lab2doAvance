@@ -389,3 +389,54 @@ ul li{
         flex-direction: column;
     }
 }
+
+.usuario-nombre {
+    color: white;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.btn-cerrar-sesion {
+    background: #e03131;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cerrar-sesion:hover {
+    background: #c92a2a;
+}
+
+.btn-iniciar-sesion {
+    background: transparent;
+    border: 1px solid #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-iniciar-sesion:hover {
+    background: #ffffff;
+    color: #2d6a4f;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2d6a4f;
+    padding: 1rem 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.acciones {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

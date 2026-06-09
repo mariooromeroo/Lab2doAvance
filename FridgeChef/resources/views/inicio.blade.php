@@ -22,18 +22,26 @@
             <form action="{{ route('busqueda') }}" method="GET">
                 <input type="text" name="buscar" placeholder="Buscar...">
             </form>
-            <!-- Botón corregido -->
-            <a href="{{ url('/login') }}">
-                <button type="button">Iniciar Sesión</button>
-            </a>
+            @if(auth()->check())
+                <span class="usuario-nombre"> {{ auth()->user()->nombre }}</span>
+                <form method="POST" action="{{ url('/logout') }}" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="btn-cerrar-sesion">Cerrar Sesión</button>
+                </form>
+            @else
+                <a href="{{ url('/login') }}" class="btn-iniciar-sesion">Iniciar Sesión</a>
+            @endif
         </div>
     </header>
 
     <section class="hero">
         <h2>Cocina con lo que ya tienes en casa</h2>
         <p>Descubre recetas deliciosas usando ingredientes disponibles en tu refrigerador.</p>
-        <button class="btn-principal">+ Crear Receta</button>
-    </section>
+        @if(auth()->check())
+            <a href="#" class="btn-principal">+ Crear Receta</a>
+        @else
+            <button class="btn-principal" onclick="alert('Debes iniciar sesión para crear una receta.')">+ Crear Receta</button>
+        @endif
 
     <section class="recetas">
         <h2>Recetas Destacadas</h2>

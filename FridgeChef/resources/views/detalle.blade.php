@@ -23,7 +23,15 @@
         <form action="{{ route('busqueda') }}" method="GET">
             <input type="text" name="buscar" placeholder="Buscar..." value="{{ request('buscar') }}">
         </form>
-        <button>Iniciar Sesión</button>
+        @if(auth()->check())
+            <span class="usuario-nombre"> {{ auth()->user()->nombre }}</span>
+            <form method="POST" action="{{ url('/logout') }}" style="display: inline;">
+                @csrf
+                <button type="submit" class="btn-cerrar-sesion">Cerrar Sesión</button>
+            </form>
+        @else
+            <a href="{{ url('/login') }}" class="btn-iniciar-sesion">Iniciar Sesión</a>
+        @endif
     </div>
 </header>
 

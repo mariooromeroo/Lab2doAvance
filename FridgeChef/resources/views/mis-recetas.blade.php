@@ -20,11 +20,20 @@
         <a href="#">Sobre Nosotros</a>
     </nav>
     <div class="acciones">
-        <form action="#" method="GET">
-            <input type="text" name="buscar" placeholder="Buscar...">
+    <form action="{{ route('busqueda') }}" method="GET">
+        <input type="text" name="buscar" placeholder="Buscar...">
+    </form>
+    
+    @if(auth()->check())
+        <span class="usuario-nombre"> {{ auth()->user()->nombre }}</span>
+        <form method="POST" action="{{ url('/logout') }}" style="display: inline;">
+            @csrf
+            <button type="submit" class="btn-cerrar-sesion">Cerrar Sesión</button>
         </form>
-        <button>Iniciar Sesión</button>
-    </div>
+    @else
+        <a href="{{ url('/login') }}" class="btn-iniciar-sesion">Iniciar Sesión</a>
+    @endif
+</div>
 </header>
 
 {{-- Título principal --}}
@@ -52,8 +61,8 @@
     </div>
     @empty
     <div class="no-recetas">
-        <p>🍽️ Aún no tienes recetas creadas.</p>
-        <a href="#" class="btn-crear">+ Crear mi primera receta</a>
+        <p> Aún no tienes recetas creadas.</p>
+        <p>Completa el formulario de abajo para agregar tu primera receta.</p>
     </div>
     @endforelse
 </div>
@@ -63,7 +72,7 @@
     <h2>Agregar Nueva Receta</h2>
     <p>Comparte tu receta favorita con la comunidad.</p>
 
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('mis-recetas.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-grid">
