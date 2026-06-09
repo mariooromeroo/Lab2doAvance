@@ -3,161 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FridgeChef</title>
-    <link rel="stylesheet" href="{{ asset('css/inicio.css') }}">
-</head>
-<body>
-
-    <header class="navbar">
-        <div class="logo">
-            <h1>FridgeChef</h1>
-        </div>
-        <nav>
-            <a href="#">Inicio</a>
-            <a href="{{ route('categorias.index') }}">Categorías</a>
-            <a href="#">Mis recetas</a>
-            <a href="#">Sobre Nosotros</a>
-        </nav>
-        <div class="acciones">
-            <form action="{{ route('busqueda') }}" method="GET">
-
-                 <input
-                     type="text"
-                     name="buscar"
-                  placeholder="Buscar..."
-                 >
-
-            </form>
-            <a href="{{ url('/login') }}">
-                <button type="button">Iniciar Sesión</button>
-            </a>
-        </div>
-    </header>
-    <title>{{ $receta->titulo }}</title>
-
+    <title>{{ $receta->titulo }} - FridgeChef</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/detalle.css') }}">
-
-    <!-- ICONOS -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
 
-<div class="contenedor-principal">
-
-    <!-- IMAGEN -->
-    <div class="imagen-receta">
-
-        <img src="{{ asset('img/' . $receta->imagen) }}"
-             alt="{{ $receta->titulo }}">
-
+<header class="navbar">
+    <div class="logo">
+        <h1>FridgeChef</h1>
     </div>
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="{{ route('categorias.index') }}">Categorías</a>
+        <a href="{{ route('mis-recetas') }}">Mis recetas</a>
+        <a href="#">Sobre Nosotros</a>
+    </nav>
+    <div class="acciones">
+        <form action="{{ route('busqueda') }}" method="GET">
+            <input type="text" name="buscar" placeholder="Buscar..." value="{{ request('buscar') }}">
+        </form>
+        <button>Iniciar Sesión</button>
+    </div>
+</header>
 
-    <!-- INFORMACION -->
-    <div class="info-receta">
-
-        <h1>{{ $receta->titulo }}</h1>
-
-        <!-- ESTRELLAS -->
-        <div class="rating">
-
-            <div class="estrellas">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-            </div>
-
-            <span>4.6 (128 opiniones)</span>
-
+<main class="contenedor-principal">
+    {{-- Columna izquierda: Imagen y datos de la receta --}}
+    <div class="izquierda">
+        <div class="imagen-receta">
+            <img src="{{ asset('img/' . ($receta->imagen ?? 'default.jpg')) }}" alt="{{ $receta->titulo }}">
         </div>
 
-        <!-- DATOS -->
-        <div class="datos">
-
-            <div class="dato">
-                <i class="far fa-clock"></i>
-
-                <div>
-                    <span>Tiempo total</span>
+        <div class="info-receta">
+            <h1>{{ $receta->titulo }}</h1>
+            <div class="rating">
+                <div class="estrellas">★★★★☆</div>
+                <span>4.6 (128 opiniones)</span>
+            </div>
+            <div class="datos">
+                <div class="dato">
+                    <span>⏱ Tiempo total:</span>
                     <strong>{{ $receta->tiempo_preparacion }} min</strong>
                 </div>
-            </div>
-
-            <div class="dato">
-                <i class="fas fa-hat-chef"></i>
-
-                <div>
-                    <span>Dificultad</span>
+                <div class="dato">
+                    <span>📊 Dificultad:</span>
                     <strong>Fácil</strong>
                 </div>
-            </div>
-
-            <div class="dato">
-                <i class="fas fa-users"></i>
-
-                <div>
-                    <span>Porciones</span>
+                <div class="dato">
+                    <span>🍽 Porciones:</span>
                     <strong>{{ $receta->porciones }} porciones</strong>
                 </div>
             </div>
-
+            <div class="descripcion">
+                <p>{{ $receta->descripcion }}</p>
+            </div>
+            <button class="btn-compartir">📤 Compartir</button>
         </div>
 
-        <!-- DESCRIPCION -->
-        <p class="descripcion">
-            {{ $receta->descripcion }}
-        </p>
+        {{-- Ingredientes --}}
+        <div class="ingredientes">
+            <h2>🛒 Ingredientes</h2>
+            <ul>
+                @foreach($receta->ingredientes as $ingrediente)
+                <li>{{ $ingrediente->nombre_ingrediente }} - {{ $ingrediente->pivot->cantidad }} {{ $ingrediente->pivot->unidad_medida }}</li>
+                @endforeach
+            </ul>
+        </div>
 
-        <!-- BOTON -->
-        <button class="btn-compartir">
-            <i class="fas fa-share-alt"></i>
-            Compartir
-        </button>
-
+        {{-- Preparación --}}
+        <div class="preparacion">
+            <h2>👨‍🍳 Preparación</h2>
+            <div class="texto-preparacion">
+                {!! nl2br(e($receta->preparacion)) !!}
+            </div>
+        </div>
     </div>
 
-</div>
+    {{-- Columna derecha: Comentarios --}}
+    <div class="derecha">
+        <div class="comentarios">
+            <h3>Comentarios ({{ $receta->comentarios->count() }})</h3>
 
-<!-- CONTENIDO ABAJO -->
-<div class="contenido">
+            @auth
+            <form action="{{ route('comentario.store', $receta->id_receta) }}" method="POST" class="form-comentario">
+                @csrf
+                <textarea name="comentario" rows="3" placeholder="Escribe tu comentario..." required></textarea>
+                <button type="submit">Publicar comentario</button>
+            </form>
+            @else
+            <p class="login-para-comentar">Inicia sesión para dejar un comentario.</p>
+            @endauth
 
-    <!-- INGREDIENTES -->
-    <div class="ingredientes">
-
-        <h2>Ingredientes</h2>
-
-        <ul>
-
-        @foreach($receta->ingredientes as $ingrediente)
-
-        <li>
-            {{ $ingrediente->pivot->cantidad }}
-            {{ $ingrediente->pivot->unidad_medida }}
-            de
-            {{ $ingrediente->nombre_ingrediente }}
-        </li>
-
-        @endforeach
-
-        </ul>
-
+            <div class="lista-comentarios">
+                @forelse($receta->comentarios as $comentario)
+                <div class="comentario">
+                    <div class="comentario-header">
+                        <strong>{{ $comentario->usuario->nombre ?? 'Usuario' }}</strong>
+                        <span>{{ \Carbon\Carbon::parse($comentario->fecha_comentario)->diffForHumans() }}</span>
+                        @auth
+                            @if(Auth::id() === $comentario->id_usuario)
+                            <form action="{{ route('comentario.destroy', $comentario->id_comentario) }}" method="POST" class="form-eliminar-comentario">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="return confirm('¿Eliminar este comentario?')">🗑️</button>
+                            </form>
+                            @endif
+                        @endauth
+                    </div>
+                    <p class="comentario-texto">{{ $comentario->comentario }}</p>
+                    <button class="btn-respuesta">Responde</button>
+                </div>
+                @empty
+                <p class="sin-comentarios">Aún no hay comentarios. ¡Sé el primero en opinar!</p>
+                @endforelse
+            </div>
+        </div>
     </div>
+</main>
 
-    <!-- PREPARACION -->
-    <div class="preparacion">
-
-        <h2>Preparación</h2>
-
-        <p class="texto-preparacion">
-            {!! nl2br(e($receta->preparacion)) !!}
-        </p>
-
-    </div>
-
-</div>
+<footer>
+    <p>🍽️ FridgeChef - Cocina sin desperdiciar, aprovecha cada ingrediente</p>
+    <p>Únete a FridgeChef, es completamente gratis</p>
+</footer>
 
 </body>
 </html>

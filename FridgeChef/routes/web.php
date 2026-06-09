@@ -5,6 +5,8 @@ use App\Http\Controllers\InicioController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\BusquedaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\MisRecetasController;
 
 Route::get('/', [InicioController::class, 'index']);
 Route::get('/receta/{id}', [InicioController::class, 'show'])
@@ -19,10 +21,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::post('/register', [LoginController::class, 'register']);
 
-Route::get('/mis-recetas', function () {
-    $misRecetas = App\Models\Receta::where('id_usuario', 1)
-        ->orderBy('fecha_creacion', 'desc')
-        ->get();
-    $categorias = App\Models\Categoria::all();
-    return view('mis-recetas', compact('misRecetas', 'categorias'));
-})->name('mis-recetas');
+Route::get('/mis-recetas', [MisRecetasController::class, 'index'])->name('mis-recetas');
+
+Route::post('/receta/{id}/comentario', [ComentarioController::class, 'store'])->name('comentario.store');
+Route::delete('/comentario/{id}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');

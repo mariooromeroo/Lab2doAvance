@@ -18,7 +18,7 @@ class InicioController extends Controller
 
     public function show($id)
     {
-        $receta = Receta::with('ingredientes')->findOrFail($id);
+        $receta = Receta::with('ingredientes', 'comentarios.usuario')->findOrFail($id);
 
         return view('detalle', compact('receta'));
     }

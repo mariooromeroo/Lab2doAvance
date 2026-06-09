@@ -46,4 +46,9 @@ class User extends Authenticatable
     ];
 
     public $timestamps = false;
+
+    public function comentarios()
+    {
+    return $this->hasMany(Comentario::class, 'id_usuario', 'id_usuario');
+    }
 }

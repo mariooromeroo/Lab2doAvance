@@ -42,4 +42,10 @@ class Receta extends Model
             'id_ingrediente'
         )->withPivot('cantidad', 'unidad_medida');
     }
+    
+    public function comentarios()
+    {
+    return $this->hasMany(Comentario::class, 'id_receta', 'id_receta')
+        ->orderBy('fecha_comentario', 'desc');
+    }
 }
