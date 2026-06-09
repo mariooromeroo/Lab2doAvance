@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
 
 class Receta extends Model
 {
@@ -19,13 +18,14 @@ class Receta extends Model
         'preparacion',
         'tiempo_preparacion',
         'porciones',
+        'dificultad',
         'imagen',
         'fecha_creacion'
     ];
 
     public function usuario()
     {
-    return $this->belongsTo(User::class, 'id_usuario', 'id_usuario');
+        return $this->belongsTo(User::class, 'id_usuario', 'id_usuario');
     }
 
     public function categoria()
@@ -42,10 +42,10 @@ class Receta extends Model
             'id_ingrediente'
         )->withPivot('cantidad', 'unidad_medida');
     }
-    
+
     public function comentarios()
     {
-    return $this->hasMany(Comentario::class, 'id_receta', 'id_receta')
-        ->orderBy('fecha_comentario', 'desc');
+        return $this->hasMany(Comentario::class, 'id_receta', 'id_receta')
+            ->orderBy('fecha_comentario', 'desc');
     }
 }

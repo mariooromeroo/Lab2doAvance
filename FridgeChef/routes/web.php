@@ -23,6 +23,9 @@ Route::post('/register', [LoginController::class, 'register']);
 
 Route::get('/mis-recetas', [MisRecetasController::class, 'index'])->name('mis-recetas')->middleware('auth');
 Route::post('/mis-recetas/guardar', [MisRecetasController::class, 'store'])->name('mis-recetas.store')->middleware('auth');
+Route::get('/receta/{id}/editar', [MisRecetasController::class, 'edit'])->name('receta.editar')->middleware('auth');
+Route::put('/receta/{id}', [MisRecetasController::class, 'update'])->name('receta.update')->middleware('auth');
+Route::delete('/receta/{id}', [MisRecetasController::class, 'destroy'])->name('receta.destroy')->middleware('auth');
 
 Route::post('/receta/{id}/comentario', [ComentarioController::class, 'store'])->name('comentario.store');
 Route::delete('/comentario/{id}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');
