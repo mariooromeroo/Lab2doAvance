@@ -43,6 +43,7 @@
         @else
             <button class="btn-principal" onclick="alert('Debes iniciar sesión para crear una receta.')">+ Crear Receta</button>
         @endif
+    </section>
 
     <section class="recetas">
         <h2>Recetas Destacadas</h2>
