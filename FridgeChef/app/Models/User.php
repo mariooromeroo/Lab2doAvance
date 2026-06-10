@@ -51,4 +51,8 @@ class User extends Authenticatable
     {
     return $this->hasMany(Comentario::class, 'id_usuario', 'id_usuario');
     }
+    public function favoritos()
+    {
+    return $this->hasMany(Favorito::class, 'id_usuario', 'id_usuario');
+    }
 }

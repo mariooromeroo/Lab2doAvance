@@ -7,6 +7,7 @@ use App\Http\Controllers\BusquedaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\MisRecetasController;
+use App\Http\Controllers\FavoritoController;
 
 Route::get('/', [InicioController::class, 'index']);
 Route::get('/receta/{id}', [InicioController::class, 'show'])
@@ -29,3 +30,12 @@ Route::delete('/receta/{id}', [MisRecetasController::class, 'destroy'])->name('r
 
 Route::post('/receta/{id}/comentario', [ComentarioController::class, 'store'])->name('comentario.store');
 Route::delete('/comentario/{id}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');
+
+Route::get('/sobre-nosotros', function () {
+    return view('sobre-nosotros');
+})->name('sobre-nosotros');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/favoritos', [FavoritoController::class, 'index'])->name('favoritos.index');
+    Route::post('/favoritos/toggle/{id_receta}', [FavoritoController::class, 'toggle'])->name('favoritos.toggle');
+});

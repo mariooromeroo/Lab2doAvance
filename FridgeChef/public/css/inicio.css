@@ -247,3 +247,23 @@ footer {
     align-items: center;
     gap: 1rem;
 }
+.active{
+    color: #9cd16d !important;
+    font-weight: bold;
+}
+.btn-quitar-receta {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 5px 14px;
+    background: #cc4444;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-quitar-receta:hover {
+    background: #aa2222;
+}

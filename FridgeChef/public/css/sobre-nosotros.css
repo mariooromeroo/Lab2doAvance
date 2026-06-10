@@ -1,0 +1,80 @@
+.about-container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.about-container h1{
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.subtitulo{
+    font-size: 2rem;
+    color: #666;
+    max-width: 900px;
+    margin: auto;
+}
+
+.descripcion{
+    max-width: 900px;
+    margin: 30px auto;
+    font-size: 1.3rem;
+    line-height: 1.8;
+}
+
+.about-container h2{
+    margin-top: 50px;
+    font-size: 2.7rem;
+}
+
+.cards-problema{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 450px;
+    background: #f7f7f7;
+    border: 3px solid #8f8f8f;
+    border-radius: 30px;
+    padding: 25px;
+    text-align: left;
+}
+
+.card h3{
+    font-size: 2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.card ul{
+    padding-left: 25px;
+}
+
+.card li{
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.icono{
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.alerta{
+    color: #d13a2f;
+}
+
+.idea{
+    color: #333;
+}
+
+.active{
+    color: #9cd16d !important;
+    font-weight: bold;
+}

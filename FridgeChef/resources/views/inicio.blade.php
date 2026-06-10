@@ -13,10 +13,11 @@
             <h1>FridgeChef</h1>
         </div>
         <nav>
-            <a href="#">Inicio</a>
+            <a href="#" class="active">Inicio</a>
             <a href="{{ route('categorias.index') }}">Categorías</a>
             <a href="{{ route('mis-recetas') }}">Mis recetas</a>
-            <a href="#">Sobre Nosotros</a>
+            <a href="{{ route('favoritos.index') }}">Favoritos</a>
+            <a href="{{ route('sobre-nosotros') }}">Sobre Nosotros</a>
         </nav>
         <div class="acciones">
             <form action="{{ route('busqueda') }}" method="GET">
