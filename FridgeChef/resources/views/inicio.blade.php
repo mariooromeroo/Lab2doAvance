@@ -49,7 +49,11 @@
         <div class="contenedor-recetas">
             @foreach($recetas as $receta)
             <div class="card-receta">
+                @if($receta->imagen)
+                <img src="{{ asset('img/' . $receta->imagen) }}" alt="{{ $receta->titulo }}" class="receta-imagen">
+                @else
                 <div class="receta-imagen-placeholder">🍲</div>
+                @endif
                 <h3>{{ $receta->titulo }}</h3>
                 <p>⏱ {{ $receta->tiempo_preparacion }} min</p>
                 <a href="{{ route('receta.detalle', $receta->id_receta) }}">
