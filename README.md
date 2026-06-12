@@ -1,6 +1,6 @@
 # FridgeChef
 
-FrdigeChef es una aplicación web que ayuda a los usuarios a encontrar recetas de cocina utilizando los ingredientes que tienen disponibles en su nevera o despensa, con el objetivo de reducir el desperdicio de alimentos.
+FridgeChef es una aplicación web diseñada para ayudar a los usuarios a encontrar recetas de cocina utilizando únicamente los ingredientes que tienen disponibles en su nevera o despensa. La plataforma permite buscar recetas por nombre, categoría o ingredientes específicos, mostrando resultados relevantes de forma rápida y sencilla. Además, los usuarios pueden crear sus propias recetas, editarlas, eliminarlas y comentar las recetas de otros. El objetivo principal es fomentar una cocina más consciente, reducir el desperdicio de alimentos y aprovechar al máximo los recursos disponibles en el hogar.
 
 ## Integrantes del grupo
 
@@ -12,12 +12,12 @@ FrdigeChef es una aplicación web que ayuda a los usuarios a encontrar recetas d
 ## Indicaciones de instalación
 
 1. **Clonar el repositorio**  
-   - Abrir VS Code  
-   - En la pantalla de inicio, hacer clic en "Clone Git Repository..."  
-   - Pegar la URL: `https://github.com/mariooromeroo/Lab2doAvance.git`  
-   - Elegir una carpeta destino  
-   - Abrir el proyecto clonado  
-   *O desde la terminal:* `git clone https://github.com/mariooromeroo/Lab2doAvance.git`
+- Abrir VS Code
+- En la pantalla de inicio, hacer clic en "Clone Git Repository..."
+- Pegar la URL: `https://github.com/mariooromeroo/Lab2doAvance.git`  
+- Elegir una carpeta destino  
+- Abrir el proyecto clonado  
+*O desde la terminal:* `git clone https://github.com/mariooromeroo/Lab2doAvance.git`
 
 2. **Entrar a la carpeta del proyecto**  
    `cd Lab2doAvance/FridgeChef`
