@@ -76,6 +76,10 @@
                 @endauth
                 <div class="datos-rapidos">
                     <div class="dato-item">
+                        <i class="fas fa-tag"></i>
+                        <span>Categoría: <strong>{{ $receta->categoria->nombre_categoria ?? 'Sin categoría' }}</strong></span>
+                    </div>
+                    <div class="dato-item">
                         <i class="far fa-clock"></i>
                         <span>Tiempo total: <strong>{{ $receta->tiempo_preparacion }} min</strong></span>
                     </div>

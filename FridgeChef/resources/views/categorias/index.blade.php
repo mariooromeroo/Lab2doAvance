@@ -52,8 +52,14 @@
                 <div class="card-categoria">
                     <div class="card-icon">
                         @php
-                            $iconos = ['fa-utensils', 'fa-salad', 'fa-pizza-slice', 'fa-mug-hot', 'fa-ice-cream', 'fa-fish', 'fa-bread-slice', 'fa-apple-alt', 'fa-cake-candles'];
-                            $icono = $iconos[$categoria->id_categoria % count($iconos)];
+                            $iconoPorCategoria = [
+                            'Platos Fuertes' => 'fa-utensils',
+                            'Ensaladas' => 'fa-leaf',
+                            'Pastas' => 'fa-utensil-spoon',
+                            'Sopas' => 'fa-mug-hot',
+                            'Postres' => 'fa-ice-cream'
+                        ];
+                        $icono = $iconoPorCategoria[$categoria->nombre_categoria] ?? 'fa-utensils';
                         @endphp
                         <i class="fas {{ $icono }}"></i>
                     </div>

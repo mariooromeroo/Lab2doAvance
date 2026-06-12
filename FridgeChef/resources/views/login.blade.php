@@ -58,7 +58,6 @@
                             <input type="checkbox" name="remember" {{ Cookie::get('remember_email') ? 'checked' : '' }}>
                             <span>Recordarme</span>
                         </label>
-                        <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
                     </div>
                     
                     <button type="submit" class="btn-login">Iniciar sesión</button>
