@@ -37,9 +37,9 @@ FridgeChef es una aplicación web diseñada para ayudar a los usuarios a encontr
    `DB_PASSWORD=`
 
 7. **Importar la base de datos**  
-   - Abrir phpMyAdmin  
-   - Crear la base de datos `fridgechef`  
-   - Importar el archivo `database/fridgechef.sql`
+- Abrir phpMyAdmin  
+- Crear la base de datos `fridgechef`  
+- Importar el archivo `fridgechef.sql`
 
 8. **Iniciar el servidor**  
    `php artisan serve`
