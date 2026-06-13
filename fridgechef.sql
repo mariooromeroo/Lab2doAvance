@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2026 a las 05:53:33
+-- Tiempo de generación: 13-06-2026 a las 04:56:10
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -71,6 +71,20 @@ INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`, `descripcion`) VAL
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_comentario` int(11) NOT NULL,
+  `id_receta` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `comentario` text NOT NULL,
+  `fecha_comentario` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `failed_jobs`
 --
 
@@ -83,6 +97,19 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `favoritos`
+--
+
+CREATE TABLE `favoritos` (
+  `id_favorito` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_receta` int(11) NOT NULL,
+  `fecha_guardado` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -178,18 +205,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `password_reset_tokens`
---
-
-CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `recetas`
 --
 
@@ -203,18 +218,20 @@ CREATE TABLE `recetas` (
   `tiempo_preparacion` int(11) NOT NULL,
   `porciones` int(11) NOT NULL,
   `imagen` varchar(255) DEFAULT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp()
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
+  `dificultad` varchar(50) DEFAULT 'Fácil'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `recetas`
 --
 
-INSERT INTO `recetas` (`id_receta`, `id_usuario`, `id_categoria`, `titulo`, `descripcion`, `preparacion`, `tiempo_preparacion`, `porciones`, `imagen`, `fecha_creacion`) VALUES
-(1, 1, 1, 'Pollo al Horno', 'Pollo jugoso y lleno de sabor, marinado con hierbas y especias.', '1. Precalienta el horno a 200°C.\r\n2. Mezcla ajo, aceite de oliva y especias.\r\n3. Marina el pollo completamente.\r\n4. Hornea durante 45 minutos.\r\n5. Deja reposar antes de servir.', 45, 4, 'Pollo.jpg', '2026-05-18 03:39:02'),
-(2, 1, 2, 'Ensalada César', 'Ensalada fresca con pollo, crutones y aderezo César.', '1. Lava la lechuga romana.\r\n2. Cocina el pollo y córtalo en tiras.\r\n3. Agrega crutones y queso parmesano.\r\n4. Mezcla con aderezo César.\r\n5. Servir fría.', 15, 2, 'Ensalada.jpg', '2026-05-18 03:39:02'),
-(3, 2, 3, 'Pasta Alfredo', 'Pasta cremosa con salsa Alfredo y queso parmesano.', '1. Cocina la pasta en agua hirviendo.\r\n2. Derrite mantequilla y agrega crema.\r\n3. Añade queso parmesano.\r\n4. Mezcla con la pasta.\r\n5. Servir caliente.', 25, 2, 'Pasta.jpg', '2026-05-18 03:39:02'),
-(4, 1, 1, 'Tacos al Pastor', 'Tacos mexicanos tradicionales llenos de sabor.', '1. Marina la carne con especias.\r\n2. Cocina en plancha caliente.\r\n3. Calienta las tortillas.\r\n4. Agrega cebolla y cilantro.\r\n5. Servir con limón.', 30, 4, 'Tacos.jpg', '2026-05-18 03:39:02');
+INSERT INTO `recetas` (`id_receta`, `id_usuario`, `id_categoria`, `titulo`, `descripcion`, `preparacion`, `tiempo_preparacion`, `porciones`, `imagen`, `fecha_creacion`, `dificultad`) VALUES
+(1, 1, 1, 'Pollo al Horno', 'Pollo jugoso y lleno de sabor, marinado con hierbas y especias.', '1. Precalienta el horno a 200°C.\r\n2. Mezcla ajo, aceite de oliva y especias.\r\n3. Marina el pollo completamente.\r\n4. Hornea durante 45 minutos.\r\n5. Deja reposar antes de servir.', 45, 4, 'Pollo.jpg', '2026-06-13 02:38:29', 'Fácil'),
+(2, 1, 2, 'Ensalada César', 'Ensalada fresca con pollo, crutones y aderezo César.', '1. Lava la lechuga romana.\r\n2. Cocina el pollo y córtalo en tiras.\r\n3. Agrega crutones y queso parmesano.\r\n4. Mezcla con aderezo César.\r\n5. Servir fría.', 15, 2, 'Ensalada.jpg', '2026-06-13 02:38:29', 'Fácil'),
+(3, 2, 3, 'Pasta Alfredo', 'Pasta cremosa con salsa Alfredo y queso parmesano.', '1. Cocina la pasta en agua hirviendo.\r\n2. Derrite mantequilla y agrega crema.\r\n3. Añade queso parmesano.\r\n4. Mezcla con la pasta.\r\n5. Servir caliente.', 25, 2, 'Pasta.jpg', '2026-06-13 02:38:29', 'Fácil'),
+(4, 1, 1, 'Tacos al Pastor', 'Tacos mexicanos tradicionales llenos de sabor.', '1. Marina la carne con especias.\r\n2. Cocina en plancha caliente.\r\n3. Calienta las tortillas.\r\n4. Agrega cebolla y cilantro.\r\n5. Servir con limón.', 30, 4, 'Tacos.jpg', '2026-06-13 02:38:29', 'Fácil'),
+(5, 2, 1, 'Milanesas de Pollo', 'Milanesas crujientes', 'Empanizar las pechugas. Freír en aceite caliente.', 20, 4, NULL, '2026-06-13 02:38:29', 'Fácil');
 
 -- --------------------------------------------------------
 
@@ -276,7 +293,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('RQ0Iu67uiHdmQOHP28LIXXlBGcoKGh5eU6Oxa4nR', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.119.0 Chrome/142.0.7444.265 Electron/39.8.8 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQXlZNzhvMDJGU0o1aEFUQnZwUVNSSG15QTFnTm5nQ0c2TWlURWVGeCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7czo1OiJyb3V0ZSI7Tjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1780255524);
+('uO3bFuzjQDRPGZlKfrlIP25Gm7y4may1E23fR8V1', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoieU91Q3g3MzlXeUUxUkE1VlcxMnRTbWxqcnNNMUxvbFhJM0hWNkJ1SiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZWNldGEvMSI7czo1OiJyb3V0ZSI7czoxNDoicmVjZXRhLmRldGFsbGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjMxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvZmF2b3JpdG9zIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mzt9', 1781319160);
 
 -- --------------------------------------------------------
 
@@ -341,11 +358,27 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `id_receta` (`id_receta`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
 -- Indices de la tabla `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indices de la tabla `favoritos`
+--
+ALTER TABLE `favoritos`
+  ADD PRIMARY KEY (`id_favorito`),
+  ADD UNIQUE KEY `unique_fav` (`id_usuario`,`id_receta`),
+  ADD KEY `fk_fav_receta` (`id_receta`);
 
 --
 -- Indices de la tabla `ingredientes`
@@ -371,12 +404,6 @@ ALTER TABLE `job_batches`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `password_reset_tokens`
---
-ALTER TABLE `password_reset_tokens`
-  ADD PRIMARY KEY (`email`);
 
 --
 -- Indices de la tabla `recetas`
@@ -426,10 +453,22 @@ ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `favoritos`
+--
+ALTER TABLE `favoritos`
+  MODIFY `id_favorito` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `ingredientes`
@@ -453,7 +492,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `recetas`
 --
 ALTER TABLE `recetas`
-  MODIFY `id_receta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_receta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -465,11 +504,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_receta`) REFERENCES `recetas` (`id_receta`),
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+
+--
+-- Filtros para la tabla `favoritos`
+--
+ALTER TABLE `favoritos`
+  ADD CONSTRAINT `fk_fav_receta` FOREIGN KEY (`id_receta`) REFERENCES `recetas` (`id_receta`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_fav_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `recetas`
